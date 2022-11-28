@@ -1,0 +1,83 @@
+<%= render "shared/header" %>
+
+<div class="client-new-wrap" > 
+  <div class="client-container">
+    <div class="devise_main">
+      <h2>新規登録</h2>
+        <div class="devise-item">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= render "clients/shared/error_messages", resource: resource %>
+            <div class="field">
+              <p class="devise_title"><%= f.label :会社名 %></p>
+              <ul class="login_ul">
+                <li><p class="text-danger">必須</p></li>
+                <li><%= f.text_field :company_name, class:"input-default", id:"#", placeholder:"例)kototabi " %></li>
+              </ul>
+            </div>
+            <div class="field">
+              <p class="devise_title"><%= f.label :カナ %></p>
+              <ul class="login_ul">
+                <li><p class="text-danger">必須</p></li>
+                <li><%= f.text_field :c_kana, class:"input-default", id:"#", placeholder:"例)コトタビ " %></li>
+              </ul>
+            </div>
+            <div class="field">
+              <p class="devise_title"><%= f.label :責任者 %></p>
+              <ul class="login_ul">
+                <li><p class="text-danger">必須</p></li>
+                <li><%= f.text_field :supervisor, class:"input-default", id:"#", placeholder:"例)山田 太旅 " %></li>
+              </ul>
+            </div>
+            <div class="field">
+              <p class="devise_title"><%= f.label :カナ %></p>
+              <ul class="login_ul">
+                <li><p class="text-danger">必須</p></li>
+                <li><%= f.text_field :s_kana, class:"input-default", id:"#", placeholder:"例)ヤマダ タリョ " %></li>
+              </ul>
+            </div>
+            <div class="field">
+              <p class="devise_title"><%= f.label :住所 %></p>
+              <ul class="login_ul">
+                <li><p class="text-danger">必須</p></li>
+                <li><%= f.text_field :company_address, class:"input-default", id:"#", placeholder:"例)東京都千代田区1-1 " %></li>
+              </ul>
+            </div>
+            <div class="field">
+              <p class="devise_title"><%= f.label :電話番号 %></p>
+              <ul class="login_ul">
+                <li><p class="text-danger">必須</p></li>
+                <li><%= f.text_field :tel, class:"input-default", id:"#", placeholder:"例)090-1234-5678 " %></li>
+              </ul>
+            </div>
+            <div class="field">
+              <p class="devise_title"><%= f.label :メール %></p>
+              <ul class="login_ul">
+                <li><p class="text-danger">必須</p></li>
+                <li><%= f.email_field :email, class:"input-default", autofocus: true, autocomplete: "email" %></li>
+              </ul>
+            </div>
+            <div class="field">
+              <p class="devise_title"><%= f.label :パスワード（6文字以上） %></p>
+              <ul class="login_ul">
+                <li><p class="text-danger">必須</p></li>
+                <li><%= f.password_field :password, class:"input-default", autocomplete: "current-password" %></li>
+              </ul>
+              </ul>
+            </div>
+            <div class="field">
+              <p class="devise_title"><%= f.label :パスワード確認 %></p>
+              <ul class="login_ul">
+                <li><p class="text-danger">必須</p></li>
+                <li><%= f.password_field :password_confirmation, class:"input-default", autocomplete: "new-password" %></li>
+              </ul>
+            </div>
+            <div class="actions">
+              <%= f.submit "新規登録", class:"actions-submit"%>
+            </div>
+          <% end %>
+        </div>
+    </div>
+  </div><!--container text-dark-->
+</div><!--background_client-->
+
+<%= render "shared/footer_logo" %>

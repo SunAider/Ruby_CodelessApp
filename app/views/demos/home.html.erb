@@ -1,0 +1,78 @@
+<!-----ヘッター------>
+<%= render "shared/header_demo" %>
+<!-----メイン------>
+<div class="top">
+<!----動画----->
+  <div class="top_video_content" >
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <%= video_tag("codeless.mp4", class: "top_video", autoplay: true, loop: true, muted: true, alt:"ダミー画像") %>
+          <div class="top_hero">
+            <%#= image_tag "codeless-top-logo.png", class: "top_logo" %>
+            <h3 class="top_title"></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-----区切り------>
+  <div class="section-wrap">
+    <div class="section">
+      <div class="section-text">
+        <h3>CODE LESSでWebサイト・ECサイトを作る。</h3>
+        <h3>クリックひとつ簡単作成。顧客・商品管理までこれ一本。</h3>
+        <h3>もう、コードを書く必要はありませ。</h3>
+      </div>
+      <h2 class="section-sample">
+        <span class="section-name">sample</span>
+        <hr>
+        <small>サンプル</small>
+      </h2>
+    </div>
+  </div>
+<!----商品----->
+  <div class="products-container container-fluid">
+    <div class="row row-cols-3">
+      <div class="products_hero col">
+        <div class="hover-product">
+          <%= link_to samples_guest_sign_in_path, method: :post do %>
+            <%=image_tag "product_sample3.png", alt:"商品画像", class:"products_img" %>
+            <div class="products_info">
+              <p class="products_name">sample</p>
+              <p class="products_text">title/title/title/title</p>
+            </div>
+          <% end %>
+        </div><%#hover-product%>
+      </div>
+      <div class="products_hero col">
+        <div class="hover-product">
+          <%= link_to samples_guest_sign_in_path, method: :post do %>
+            <%=image_tag "product_sample1.png", alt:"商品画像", class:"products_img" %>
+            <div class="products_info">
+              <p class="products_name">sample</p>
+              <p class="products_text">title/title/title/title</p>
+            </div>
+          <% end %>
+        </div><%#hover-product%>
+      </div>
+      <div class="products_hero col">
+        <div class="hover-product">
+          <%= link_to samples_guest_sign_in_path, method: :post do %>
+            <%=image_tag "puroduct_sample2.png", alt:"商品画像", class:"products_img" %>
+            <div class="products_info">
+              <p class="products_name">sample</p>
+              <p class="products_text">title/title/title/title</p>
+            </div>
+          <% end %>
+        </div><%#hover-product%>
+      </div>
+    </div>
+  </div>
+  <%= render "shared/footer_client" %>
+</div>
+
+
+
+
+

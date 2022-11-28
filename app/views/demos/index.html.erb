@@ -1,0 +1,104 @@
+<div class="top">
+  <!--------メニュー--------->
+  <div class="menu-wrap">
+    <div id="app1">
+      <div class="hamburger_btn" v-on:click='ActiveBtn=!ActiveBtn'>
+        <span class="line line_01" v-bind:class="{'btn_line01':ActiveBtn}"></span>
+        <span class="line line_02" v-bind:class="{'btn_line02':ActiveBtn}"></span>
+        <span class="line line_03" v-bind:class="{'btn_line03':ActiveBtn}"></span>
+      </div>
+      <!--サイドバー-->
+      <transition name="menu">
+        <div class="menu" v-show="ActiveBtn">
+          <div class='user-conf' >
+            <div class="user-sin-login">
+              <h2>デモメニュー</h2>
+              <p>
+                <%= link_to samples_guest_sign_in_path, method: :post do%>
+                  <%= @sample.name %>
+                <% end %>
+              </p>
+              <p>
+                <%= link_to "予約管理", demos_schedule_path%>
+              </p>
+              <p>
+                <%=link_to "ログアウト", destroy_sample_session_path, method: :delete %>
+              </p>
+            </div>
+          </div>
+          <!----サイドバー商品名----->
+          <div class="main-product">
+              <ul>
+                <li>
+                  <%= link_to "サンプル", demos_show_path %>
+                </li>
+                <li>
+                  <%= link_to "サンプル", demos_show_path %>
+                </li>
+                <li>
+                  <%= link_to "サンプル", demos_show_path %>
+                </li>
+              </ul>
+          </div>
+        </div>
+      </transition>
+    </div>
+  </div>
+  <!----動画----->
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <%= video_tag("kototabi.mp4", class: "top_video", autoplay: true, loop: true, muted: true, alt:"ダミー画像") %>
+          <div class="top_hero" >
+            <%= image_tag "top-logo.png", class: "top_logo" %>
+            <h3 class="top_title">KYOTO TOUR</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!----商品----->
+  <div class="products-container container-fluid">
+    <div class="row row-cols-3">
+        <div class="products_hero col">
+          <div class="hover-product">
+            <%= link_to demos_show_path do %>
+              <%=image_tag "gojyunoto_b.jpg", alt:"商品画像", class:"products_img" %>
+              <div class="products_info">
+                <p class="products_name">京都ツアー</p>
+                <p class="products_text">sample/sample/sample</p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="products_hero col">
+          <div class="hover-product">
+            <%= link_to demos_show_path do %>
+              <%=image_tag "tatumibashi.jpg", alt:"商品画像", class:"products_img" %>
+              <div class="products_info">
+                <p class="products_name">京都ツアー</p>
+                <p class="products_text">sample/sample/sample</p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="products_hero col">
+          <div class="hover-product">
+            <%= link_to demos_show_path do %>
+              <%=image_tag "IMG_3159.jpg", alt:"商品画像", class:"products_img" %>
+              <div class="products_info">
+                <p class="products_name">京都ツアー</p>
+                <p class="products_text">sample/sample/sample</p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+    </div>
+  </div>
+
+<!------フッター------>
+<%= render "shared/footer_demo" %>
+</div>
+
+<%= javascript_pack_tag 'menu_vue' %>

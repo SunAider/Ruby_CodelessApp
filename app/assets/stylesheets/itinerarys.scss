@@ -1,0 +1,53 @@
+// itinerary
+.itinerary_item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.itinerary_content {
+  margin-top: 80px;
+}
+
+.itinerary_content h3 {
+  border-left: solid #3971ab;
+  padding-left: 20px;
+  margin-bottom: 40px;
+}
+
+.itinerary_item_info {
+  margin-left: 15px;
+}
+
+.itinerary_item_time {
+width: 150px;
+}
+
+.itinerary_item_title {
+width: 500px;
+height: 30px;
+margin-bottom: 10px;
+}
+
+.itinerary_item_title p {
+  font-size: 1.5rem;
+  color: black;
+}
+
+.itinerary_item_text p {
+  margin-top: 30px;
+  line-height: 200%;
+}
+
+.itinerary_item_text {
+  width: 500px;
+  height: 150px;
+}
+
+.itinerary_item_img_box {
+  margin-left: 30px;
+}
+
+.itinerary_item_img {
+  width: 250px;
+  height: 175px;
+}

@@ -1,0 +1,113 @@
+<div class="top-edit-wrap">
+<!-----動画------>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <%= video_tag @top.video_top, class:"top_video", :loop => true, :autoplay => true, :muted => true %> 
+        <div class="top_hero" >
+          <%= image_tag @top.image, class: "top_logo" if @top.image.attached?  %>
+          <h3 class="top_title"><%= @top.title %></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+<!------商品------>
+  <div class="products-container container-fluid">
+      <div class="row row-cols-3">
+        <% @products.each do |product| %>
+          <div class="products_hero col">
+            <div class="hover-product">
+              <%= link_to edit_product_path(product.id) do %>
+                <%= image_tag product.image, class:"products_img" if product.image.attached?  %>
+                <div class="products_info">
+                  <p class="products_name"><%= product.name %></p>
+                  <p class="products_text"><%= product.title %></p>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+  </div>
+</div>
+
+<!----------------ここからエディター---------------->
+<div class="top-editor-wrap">
+  <div id="app2">
+    <!--メニューのボタン-->
+    <div class="top-editor_btn" v-on:click='ActiveBtn=!ActiveBtn'>
+      <%= image_tag "editor_logo.png", alt:"editor_logo", class:"img" %>
+    </div>
+    <!--サイドバー-->
+    <transition name="editor-side">
+      <div class="editor-side" v-show="ActiveBtn">
+        <% if @top == nil %>
+          <div class="top-new">
+            <%= link_to "新規ページを作成する", new_top_path %>
+          </div>
+            <% else %>
+          <div class="top-editor-said">
+            <%#= link_to "top画面を編集する", edit_top_path(@top.id) %>
+            <div class="edit-top">
+              <h3>トップ画面編集</h3>
+              <%= form_with model: @top, local: true do |f| %>
+                <% render 'shared/error_messages', model: f.object %>
+                <div class="top-editor-video-box">
+                  <p class="editor-title"><%= f.label :動画 %></p>
+                  <%= f.file_field :video_top, :accept => 'video/*' %>
+                </div>
+                <div class="top-editor-logo-box">
+                  <p class="editor-title"><%= f.label :ロゴ %></p>
+                  <%= f.file_field :image %>
+                </div>
+                <div class="top-editor-title-box">
+                  <p class="editor-title"><%= f.label :タイトル %></p>
+                  <%= f.text_field :title %>
+                </div>
+                <div class="top-editor-submit-box">
+                  <%= f.submit "編集する", class:"top-editor-submit" %>
+                </div>
+              <% end %>
+            </div>
+
+            <div class="add-product">
+              <h3>商品追加</h3>
+              <%= form_with model: @product, url:products_add_path, local: true do |f| %>
+                <%#= render 'shared/error_messages', model: f.object %>
+                <div>
+                  <p><%= f.label :画像 %><span class="require">*</span></p>
+                  <%= f.file_field :image %>
+                </div>
+                <div>
+                  <p><%= f.label :商品名 %><span class="require">*</span></p>
+                  <%= f.text_field :name, placeholder:"例) 京都ツアー" %>
+                </div>
+                <div>
+                  <p><%= f.label :サブタイトル %></p>
+                  <%= f.text_field :title, placeholder:"例) 京都を歩く" %>
+                </div>
+                <div>
+                  <p><%= f.label :紹介文 %></p>
+                  <%= f.text_area :text %>
+                </div>
+                <div>
+                  <p><%= f.label :金額 %><span class="require">*</span></p>
+                  <%= f.text_field :price, placeholder:"例) 10,000" %>
+                </div>
+                <div>
+                  <p><%= f.label :単位 %><span class="require">*</span></p>
+                  <%= f.text_field :unit, placeholder:"例) 人" %>
+                </div>
+                <%= f.submit "作成する", class:"#" %>
+              <% end %>
+            </div>
+              <%#= button_to "「@top.tilleのサイト」を削除する", top_path(@top.id), method: :delete %>
+          </div>
+        <% end %>
+      </div>
+    </transition>
+  </div><%#app%>
+</div>
+
+<%= render "shared/footer_client" %>
+<%= javascript_pack_tag 'menu_vue' %>

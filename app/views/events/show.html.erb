@@ -1,0 +1,35 @@
+<%= render "shared/header" %>
+
+<div class="search-wrap">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">.id</th>
+        <th scope="col">名前</th>
+        <th scope="col">人数</th>
+        <th scope="col">商品名</th>
+        <th scope="col">Email</th>
+        <th scope="col">TEL</th>
+        <th scope="col">オプション</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <% @results.each do |result| %>
+        <tr>
+          <th scope="row"><%= result.id %></th>
+          <td><%= result.user_name %></td>
+          <td><%= result.num_id %></td>
+          <td><%= result.product_name %></td>
+          <td><%= result.user_email %></td>
+          <td><%= result.user_tel %></td>
+          <td><%= button_to "編集", edit_event_path(result.id), method: :get, class:"search-edit-button" %></td>
+        </tr>
+      <% end %>
+    </tr>
+    </tbody>
+    <br>
+  </table>
+  <%= link_to '管理画面へ戻る', events_path, class: 'a-back btn' %>
+</div>
+

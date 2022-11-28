@@ -1,0 +1,195 @@
+<%= render "shared/header_user" %>
+
+<div class="products-wrap">
+  <div class="products-main">
+    <div class="for-event">
+      <!-----見出し----->
+      <div class="products-top">
+        <div class="product-editor-name-box">
+          <h1>【<%= @product.name %>】</h1>
+        </div>
+        <div class="product-editor-title-box">
+          <p><%= @product.title %></p>
+        </div>
+        <div class="product-editor-text-box">
+          <p><%= @product.text %></p>
+        </div>
+        <div class="product-editor-imag-box">
+          <%= image_tag @product.image, class:"products_show_img" if @product.image.attached?  %>
+        </div>
+      </div>
+      <!-----商品の詳細----->
+      <div class="products-show-container">
+        <div class="products-show-container-main">
+          <!-----ポイント----->
+          <div class="point-container">
+            <div class="point-content">
+              <% @points.each do |point|  %>
+                <%#= link_to edit_product_point_path(@product, point.id) do %> <%# @product, point.id(@point)でそれぞれのidを取得してる %>
+                <h6>POINT <span><%= point.id %><span></h6>
+                  <div class="point-item">
+                    <div class="point-item-info">
+                      <div class="point-item-title-box">
+                        <h4><%= point.title %></h4>
+                      </div>
+                      <div class="point-item-text-box">
+                        <p><%= point.text %></p>
+                      </div>
+                    </div>
+                    <div class="point-item-img">
+                      <p><%= image_tag point.image, class: "point-img" if point.image.attached?  %></p>
+                    </div>
+                  </div>
+                <hr>
+              <% end %>
+            </div>
+          </div>
+          <%# ここから旅程作成 表題もクライアントが作れる用にする %>
+          <!-----旅程----->
+          <div class="itinerary_content">
+            <h3>プラン</h3>
+            <% @itinerarys.each do |itinerary|  %>
+              <div class="itinerary_item">
+                <div class="itinerary_item_time_box">
+                  <%= itinerary.time %>
+                </div>
+                <div class="itinerary_item_info">
+                  <div class="itinerary_item_title">
+                    <%= itinerary.title %>
+                  </div>
+                  <div class="itinerary_item_text">
+                    <%= itinerary.text %>
+                  </div>
+                </div>
+                <div class="itinerary_item_img_box">
+                  <%= image_tag itinerary.image, class: "itinerary_item_img" if itinerary.image.attached?  %>
+                </div>
+              </div>
+              <hr>
+            <% end %>
+          </div>
+        </div><%# products-show-container-main %>
+      </div><%# products_show_container"%>
+    </div>
+    <!-----予約フォーム----->
+    <div class="form-contents">
+      <div class=form-item>
+        <div class="form-price">
+          <div class="form-price-total">
+            <div class="form-price-one-inside">
+              <P>合計金額</P>  
+              <h4>¥<span id="total_price">0</span></h4>
+            </div>
+          </div>
+          <div class="form-price-one">
+            <div class="form-price-one-inside">
+              <h5>¥<span id="one_price"><%= @product.price %></span>/<span><%= @product.unit %></span></span></h5>
+            </div>
+          </div>
+        </div>
+        <div class="form-input">
+        <% if user_signed_in? %>
+          <%= form_with url:new_product_event_path(@product.id), method: :get, local: true do |f| %>
+            <%= f.hidden_field :price, id: "f_price"  %>
+            <%#= render 'shared/error_messages', model: f.object %>
+            <div class="form-num">
+              <div class="form-num-title-box">
+                <p><span><%= @product.unit %></span><%= f.label :num, '数' %></p>
+              </div>
+              <div class="form-num-select-box">
+                <% num_options = Num.order(:id).map { |c| [c.name, c.id, data: { multiple: c.multiple }] } %>
+                <%= f.select(:num_id, num_options, {}, {class:"form-num-select", data:{select:0}, id:"num" }) %>
+              </div>
+            </div>
+            <div class="form-day">
+              <div class="form-plan-title">
+                <p><%= f.label :start_time, 'ご希望日' %></p>
+              </div>
+              <%= raw sprintf(
+                  f.date_select(
+                    :start_time,
+                    use_month_numbers: true,
+                    discard_hour: true,
+                    prompt:'--',
+                    start_year: 2021,
+                    end_year: (Time.now.year + 3),
+                    date_separator: '%s'),
+                  "年", "月") + "日" %>
+              </div>
+              <div class="form-submit-box">
+                <%= f.submit "予約へ進む >", class:"form-submit shadow-lg " %>
+              </div>
+          <% end %>
+        <% elsif client_signed_in? %>
+          <%= form_with url:products_path(@product.id), method: :get, local: true do |f| %>
+            <%= f.hidden_field :price, id: "f_price"  %>
+            <%#= render 'shared/error_messages', model: f.object %>
+            <div class="form-num">
+              <div class="form-num-title-box">
+                <p><span><%= @product.unit %></span><%= f.label :num, '数' %></p>
+              </div>
+              <div class="form-num-select-box">
+                <% num_options = Num.order(:id).map { |c| [c.name, c.id, data: { multiple: c.multiple }] } %>
+                <%= f.select(:num_id, num_options, {}, {class:"form-num-select", data:{select:0}, id:"num" }) %>
+              </div>
+            </div>
+            <div class="form-day">
+              <div class="form-plan-title">
+                <p><%= f.label :start_time, 'ご希望日' %></p>
+              </div>
+              <%= raw sprintf(
+                  f.date_select(
+                    :start_time,
+                    use_month_numbers: true,
+                    discard_hour: true,
+                    prompt:'--',
+                    start_year: 2021,
+                    end_year: (Time.now.year + 3),
+                    date_separator: '%s'),
+                  "年", "月") + "日" %>
+              </div>
+              <div class="form-submit-box">
+                <%= f.submit "予約へ進む >", class:"form-submit shadow-lg " %>
+              </div>
+          <% end %>
+
+        <% else %>
+          <%= form_with url:new_user_session_path, method: :get, local: true do |f| %>
+            <%= f.hidden_field :price, id: "f_price"  %>
+            <div class="form-num">
+              <div class="form-num-title-box">
+                <p><span><%= @product.unit %></span><%= f.label :num, '数' %></p>
+              </div>
+              <div class="form-num-select-box">
+                <% num_options = Num.order(:id).map { |c| [c.name, c.id, data: { multiple: c.multiple }] } %>
+                <%= f.select(:num_id, num_options, {}, {class:"form-num-select", data:{select:0}, id:"num" }) %>
+              </div>
+            </div>
+            <div class="form-day">
+              <div class="form-plan-title">
+                <p><%= f.label :start_time, 'ご希望日' %></p>
+              </div>
+              <%= raw sprintf(
+                  f.date_select(
+                    :start_time,
+                    use_month_numbers: true,
+                    discard_hour: true,
+                    prompt:'--',
+                    start_year: 2021,
+                    end_year: (Time.now.year + 3),
+                    date_separator: '%s'),
+                  "年", "月") + "日" %>
+              </div>
+              <div class="form-submit-box">
+                <%= f.submit "予約へ進む >", class:"form-submit shadow-lg " %>
+              </div>
+          <% end %>
+        <% end %>
+        </div>
+      </div><%# form-item %>
+    </div><%# form-contents %>
+  </div><%#products-wrap-main%>
+</div><%#products-wrap%>
+
+<div class="footer_session"></div>
+<%= render "shared/footer_user" %>

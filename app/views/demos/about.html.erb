@@ -1,0 +1,122 @@
+<!-----ヘッター------>
+<div class="header-wrap">
+  <div class="header-main-1">
+    <div class="header-left">
+      <div class="header-logo-box">
+        <%= link_to root_path, class:"header-logo-img" do %>
+          <%= image_tag "codeless-haeder-ogo.png", class:"header-logo-img" %>
+        <% end %>
+      </div>
+      <div class="header-introduction-1">
+        <ul>
+          <li><%= link_to "無料デモを使う", samples_guest_sign_in_path, method: :post %></li>
+          <li><%= link_to 'デモを編集する', clients_guest_sign_in_path, method: :post %></li>
+          <li><%= link_to "機能紹介", demos_about_path  %></li>
+          <li><%= link_to "導入企業一覧", demos_list_demos_path %></li>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="header-right-li-1">
+        <%= link_to "新規登録", new_client_registration_path %>
+      </div>
+      <div class="header-right-li-1">
+        <%= link_to "ログイン", new_client_session_path %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="about-wrap">
+  <div class="cover">
+    <div class="cover-introduction">
+      <div class="cover-center">
+        <h1 class=font_0>CODELESS 機能紹介</h1>
+        <div class="cover-text">
+          <p>ECサイトの作成と運営に必要な顧客・商品管理機能がここに。</p>
+          <p></p>
+          <p>CODELESSの機能をご紹介します。</p>
+        </div>
+        <div class="cover-demo-box">
+          <%= link_to samples_guest_sign_in_path, method: :post  do %>
+            <div class="cover-demo-button">
+              <h3>無料デモを使う</h3>
+            </div>
+          <% end %>
+          <%= link_to clients_guest_sign_in_path, method: :post  do %>
+            <div class="cover-demo-button">
+              <h3>デモを編集する</h3>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="cover-br">
+      </div>
+      <div class="cover-footer">
+        <ul><a href=""></a>
+          <li class="cover-footer-li-1"><a href="#sec1">Create</a></li>
+          <li class="cover-footer-li"><a href="#sec2">Add</a></li>
+          <li class="cover-footer-li"><a href="#sec3">Edit</a></li>
+          <li class="cover-footer-li"><a href="#sec4">Admin</a></li>
+        </ul>
+      </div>
+    </div><%#cover-introduction%>
+  </div>
+
+  <div class="about-container">
+    <div class="row">
+      <div class="about-main">
+        <div class="about-main-box">
+          <h1>How to use 操作方法</h1>
+          <div class="about-main-box-text">
+            <h5>〜デモを使った予約〜</h5>
+            <p>１、トップページより「無料デモを使う」をクリックして、次のページで商品を選択します。右の予約フォームで人数と日付をお選びください。</p>
+            <p>２、予めテストカード情報を入力しておりますので「予約する」をクリックしてください。</p>
+            <h5>〜デモを使った予約（顧客）管理〜</h5>
+            <p>１、トップページより「無料デモを使う」をクリックして、次のページで画面右下の「予約管理」をクリックしてください。</p>
+            <p>２、カレンダー上の予約者をクリックすると対象者の詳細ページへ遷移します。そこで予約情報の編集及び削除が行えます。</p>
+            <p>３、「予約管理」ページより検索が行えます。「商品で検索」で対象の商品を選択し「検索」をクリック対象の商品を選択してる対象者が表示されます。</p>
+            <h5>〜デモを使ったECサイト編集〜</h5>
+            <p>１、トップページより「デモを編集する」をクリックして、次のページで「Editor」ボタンを押します。</p>
+            <p>２、メニューバーが表示されますので、必要事項を入力して「編集する」もしくは「作成する」ボタンを押してください。</p>
+            <h5>〜クライアントとしてECサイトを作成する場合〜</h5>
+            <p>１、トップページより場面右上の新規登録ボタンをクリックしてください。</p>
+            <p>２、「トップ画面作成」ページへ遷移しますので動画や必要事項を入力して「作成する」をクリックしてください。</p>
+            <p>３、「商品の作成」ページへ遷移しますので画像や商品の詳細を入力して「作成する」をクリックしてください。</p>
+            <p>４、作成が完了すると自動的に編集ページに遷移してします。商品の追加を行うときは左上の「Editor」ボタンをクリックして追加または編集を行ってください。</p>
+          </div>
+        </div>
+        <div class="about-main-box">
+          <a name="sec1"><h1>Create 作成する</h1><a>
+          <div class="about-main-box-text">
+            <p>簡単２ステップ。好きな動画や画像を選択するだけ。</p>
+            <p>タイトルや紹介文など、運営に必要内容を入力すると、</p>
+            <p>あなただけのWebサイト・ECサイトが完成ます。</p>
+          </div>
+        </div>
+        <div class="about-main-box">
+          <a name="sec2"><h1>Add 追加</h1></a>
+          <div class="about-main-box-text">
+            <p>管理画面へ行き左上のEditerボタンを押すとメニューバーが現れます。</p>
+            <p>増やしたい項目に入力するだけ。</p>
+          </div>
+        </div>
+        <div class="about-main-box">
+          <a name="sec3"><h1>Edit 編集</h1></a>
+          <div class="about-main-box-text">
+            <p>管理画面から商品のページに進みます。</p>
+            <p>編集したい項目を書き換え、編集ボタンを押すと編集されます。</p>
+          </div>
+        </div>
+        <div class="about-main-box">
+          <a name="sec4"><h1>Admin 予約管理</h1></a>
+          <div class="about-main-box-text">
+            <p>予約管理ボタンを押すと、カレンダーの画面に遷移します。</p>
+            <p>予約があれば予定が入りクリックすると編集が可能です。</p>
+            <p>また、検索機能で絞り込む事も可能です。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render "shared/footer_client" %>

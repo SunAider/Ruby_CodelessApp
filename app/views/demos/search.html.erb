@@ -1,0 +1,47 @@
+<!-----ヘッター----->
+<%= render "shared/header_demo_user" %>
+
+<div class="edit-wrap">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">商品名</th>
+        <th scope="col">参加日</th>
+        <th scope="col">名前</th>
+        <th scope="col">カナ</th>
+        <th scope="col">人数</th>
+        <th scope="col">金額</th>
+        <th scope="col">Email</th>
+        <th scope="col">TEL</th>
+        <th scope="col">予約日</th>
+        <th scope="col">オプション</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <h1>検索結果</h1>
+      <% if @results.length !=0 %>
+        <% @results.each do |result| %>
+        <tr>
+          <td><%= result.id %></td>
+          <td><%= result.sample_product_name %></td>
+          <td><%= result.start_time %></td>
+          <td><%= result.sample_name %></td>
+          <td><%= result.sample_kana %></td>
+          <td><%= result.num_id %></td>
+          <td><%= result.price %></td>
+          <td><%= result.sample_email %></td>
+          <td><%= result.sample_tel %></td>
+          <td><%= result.created_at %></td>
+          <td><%= button_to "編集", edit_demo_path(result.id), method: :get, class:"search-edit-button" %></td>
+      <% end %>
+      <% else %>
+        該当しません
+      <% end %>
+    </tr>
+    </tbody>
+    <br>
+  </table>
+  <%= link_to '管理画面へ戻る', demos_schedule_path, class: 'a-back btn' %>
+</div>

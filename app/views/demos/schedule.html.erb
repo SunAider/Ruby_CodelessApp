@@ -1,0 +1,55 @@
+<!-----ヘッター----->
+<%= render "shared/header_demo_user" %>
+
+<div class="schedule-wrap">
+  <div class="search">
+    <div class="search-box">
+      <h3>商品で検索</h3>
+      <%= search_form_for @d, url: demos_search_path do |f| %>
+        <%= f.collection_select :sample_product_name_eq, @demo_name, :sample_product_name, :sample_product_name,  include_blank: '指定なし' %>
+        <%= f.submit '検索' %>
+      <% end %>
+    </div>
+    <div class="search-box">
+      <%# <h3>日付で検索</h3> %>
+      <%#= search_form_for @d, url: demos_search_path do |f| %>
+        <%#= f.collection_select :start_time_eq, @demos, :start_time, :start_time,  include_blank: '指定なし' %>
+        <%#= f.submit '検索' %>
+      <%# end %>
+      <%#= search_form_for @d, url: demos_search_path do |f| %>
+        <%#= f.collection_select :start_time, @demo_yaer, :start_time, :start_time,  include_blank: '指定なし' %>
+        <%#= f.submit '検索' %>
+      <%# end %>
+    </div>
+    <div class="search-box">
+      <%# <h3>名前検索</h1> %>
+      <%#= form_with(url: search_words_events_path, local: true, method: :get, class: "#") do |form| %>
+        <%# <label>名前</label> %>
+        <%#= form.text_field :keyword, placeholder: "名前で検索する", class: "#" %>
+        <%#= form.submit "検索", class: "#" %>
+      <%# end %>
+    </div>
+  </div>
+
+  <!---カレンダー-->
+  <%= month_calendar events: @demos do |date, demos| %>
+    <%= date.day %>
+
+  <!----イベントー---->
+    <ul class="event-list">
+      <% demos.each do |demo| %>
+      <li class="list">
+        <%= link_to edit_demo_path(demo.id) do %>
+          <%= demo.sample_name %>
+          <%= demo.num.name %><span>人</span>
+          <%= demo.sample_product_name %>
+        <% end %>
+      </li>
+    </ul>
+    <% end %>
+  <% end %>
+</div>
+
+  <!------フッター------>
+  <%= render "shared/footer_demo" %>
+  </div><!--footer-->

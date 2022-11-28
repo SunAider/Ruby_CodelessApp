@@ -1,0 +1,224 @@
+// all
+body {
+  background-color: #f5f5f3;
+}
+
+label{
+  margin:0;
+}
+
+ul {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-inline-start: 0px;
+}
+
+li {
+  list-style:  none;
+}
+
+p {
+  margin:0;
+}
+
+a {
+  text-decoration: none
+}
+
+
+// tops_index
+.top {
+  background-color: #eeeeee;
+  height: auto;
+}
+
+.col {
+  padding: 0;
+}
+
+
+.top_video {
+  position: relative;
+  width: 100%;
+}
+
+.top_hero {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.top_title {
+  text-align: center;
+  color: aliceblue;
+}
+
+.top_ziza {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.top_ziza a {
+color: white;
+text-decoration: none;
+}
+
+
+// 中間
+.section {
+  margin-top: 30px;
+  text-align: center;
+  display: block;
+}
+
+.col-2 {
+  width: 60px;
+  height: 80px;
+  // border-left: solid 0.1px #e6e6e6;
+  // border-right: solid 0.1px #e6e6e6;
+}
+
+.section_btn img {
+  width: 60px;
+  height: 80px;
+}
+
+.section img {
+  width: 60px;
+  height: 80px;
+}
+
+
+
+small {
+  display: block;
+  margin-top: 5px;
+}
+
+
+
+// top_new
+.top-contents-row  {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 660px;
+  display: block;
+}
+
+.top-new {
+  margin: 20px 0;
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(41, 41, 41, 0.2);
+  background-color: white;
+  box-sizing: border-box;
+}
+
+.top-new h3 {
+  margin-top: 30px;
+}
+
+.top-new-field {
+  margin-top: 30px;
+}
+
+.editor-title-new{
+  margin-bottom: 10px;
+}
+
+.require {
+  color: red;
+}
+
+.top-new-field-input {
+  width: 100%;
+  margin: 5px 0 15px;
+  padding: 10px;
+  border: 1px solid #D8D8D8;
+  border-radius: 5px;
+  font-family: "游ゴシック",
+}
+
+
+.top-new-submit {
+  width: 100%;
+  padding: 10px;
+  background-color: #57C3E9;
+  color: #f5f5f3;
+  border: none;
+  border-radius: 5px;
+}
+
+
+
+
+
+
+
+
+
+// .products_items  // tops_edit
+
+.products-container {
+  margin-top: -6.7px;
+}
+
+.products_name {
+}
+
+.products_text {
+  text-align: center;
+  color: aliceblue;
+}
+
+.products_img {
+  width: 100%;
+  height: 100%;
+}
+
+
+.hover-product {
+	width:			100%;
+	overflow:		hidden;
+	position:		relative;
+}
+
+.hover-product .products_info {
+	width:			100%;
+	height:			160px;
+	position:		absolute;
+	bottom:			-160px;
+	left:			0;
+	background-color:	rgba(0, 0, 0, 0.582);
+	-webkit-transition:	all 0.4s ease;
+	transition:		all 0.4s ease;
+}
+.hover-product:hover .products_info {
+	bottom:		0px;
+}
+
+.products_name {
+	font-size:		40px;
+	color:			#fff;
+	padding-top:		10px;
+  text-align: center;
+  color: aliceblue;
+
+}
+
+.products_text {
+	font-size:		35px;
+	color:			#fff;
+	padding-top:		10px;
+	text-align: 		center;
+
+}
